@@ -1,3 +1,4 @@
+'use strict';
 // Function
 // - fundamental building block in the program(프로그램을 구성하는 기본적인 구성요소)
 // - subprogram can be used multiple times(서브 프로그램으로도 불리며 재사용 가능)
@@ -140,12 +141,84 @@ function randomQuiz(answer, printYes, printNo) {
     }
 }
 
+// anonymous function
 const printYes = function() {
     console.log('yes!');
 };
 
+// named function
+// better debugging in debugger's stack traces
+// recursions(재귀)
 const printNo = function print() {
     console.log('no!');
 };
 randomQuiz('wrong', printYes, printNo);
 randomQuiz('love you', printYes, printNo);
+
+
+// Arrow function
+// always anonymous
+const simplePrint = function () {
+    console.log('simplePrint!');
+};
+
+// function 과 블록을 지우고 '=>'추가
+const simplePrintArrow = () => console.log('simplePrint!');
+
+
+
+const add = function (a, b) {
+    return a + b;
+}
+
+const addArrow = (a, b) => a + b;
+
+// 로직이 길어지는 경우 중괄호'{}'를 넣고 return을 해줘야함
+const simpleMultiply = (a, b) => {
+    // do something more
+ return  a* b;
+};
+
+// IIFE: Immediately Invoked Function Expression(즉시 함수 호출 표현식)
+
+// 기존 방법
+function hello() {
+    console.log('IIFE');
+}
+hello();
+
+// IIFE
+(function hello() {
+    console.log('IIFE');
+})();
+
+
+// Quiz
+function calculate(command, a, b) {
+    switch(command) {
+        case 'add':
+            console.log(`a + b = ${a + b}`);
+            break;
+        case 'substract':
+            console.log(`a - b = ${a - b}`);
+            break;
+        case 'divide':
+            console.log(`a / b = ${a / b}`);
+            break;
+        case 'multiply':
+            console.log(`a * b = ${a * b}`);
+            break;
+        case 'reminder':
+            console.log(`a % b = ${a % b}`);
+            break;
+        default:
+            console.log("명령을 확인해주세요.")
+    }
+}
+
+calculate('add', 6, 3);
+calculate('substract', 6, 3);
+calculate('divide', 6, 3);
+calculate('multiply', 6, 3);
+calculate('reminder', 6, 3);
+calculate('sky', 6, 6)
