@@ -213,6 +213,7 @@ function calculate(command, a, b) {
             break;
         default:
             console.log("명령을 확인해주세요.")
+            throw Error('unknown command');
     }
 }
 
